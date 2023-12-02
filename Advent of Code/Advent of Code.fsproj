@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Advent_of_Code</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="tasks\Day2Task.txt" />
+    <Content Include="tasks\Day1Task.txt" />
+    <Compile Include="Days\Day2.fs" />
+    <Compile Include="Days\Day1.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Tasks\" />
+  </ItemGroup>
+
+</Project>
