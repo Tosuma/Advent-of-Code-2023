@@ -20,6 +20,10 @@ let main() =
     Day2.task1() |> announceResult task1
     Day2.task2() |> announceResult task2
 
+    beginDay 3
+    Day3.task1() |> announceResult task1
+    Day3.task2() |> announceResult task2
+
     
 
 main()

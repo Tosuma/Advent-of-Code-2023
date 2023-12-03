@@ -47,7 +47,7 @@ let possibleGames (line: string) =
 
 
 // Returns the maximum value for red, green and blue multiplied together
-let findMaxValue (data: (string * int) array) : int =
+let calculatePower (data: (string * int) array) : int =
     data
     |> Array.groupBy fst
     |> Array.map (fun (color, value) ->
@@ -58,7 +58,7 @@ let findMaxValue (data: (string * int) array) : int =
 
 
 // Returns an array of tuples contain a string and an int
-let getColorValueTuple (line: string) : (string * int) array =
+let findMinCubes (line: string) : (string * int) array =
     let gameInfo = getGameInformation line
     let gameDraws = gameInfo.[1]
     
@@ -89,8 +89,8 @@ let task2() : int =
     let filePath = @"C:\Coding-Git\Advent-of-Code-2023\Advent of Code\tasks\Day2Task.txt"
     try
         File.ReadAllLines(filePath)
-        |> Array.map getColorValueTuple
-        |> Array.map findMaxValue
+        |> Array.map findMinCubes
+        |> Array.map calculatePower
         |> Array.sum
         
     with

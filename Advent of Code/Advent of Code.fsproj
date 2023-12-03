@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="tasks\Day3Task.txt" />
     <Content Include="tasks\Day2Task.txt" />
     <Content Include="tasks\Day1Task.txt" />
+    <Compile Include="Days\Day3.fs" />
     <Compile Include="Days\Day2.fs" />
     <Compile Include="Days\Day1.fs" />
     <Compile Include="Program.fs" />
