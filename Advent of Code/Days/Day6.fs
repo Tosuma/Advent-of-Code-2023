@@ -10,7 +10,16 @@ let getNumbers (line : string) : bigint array =
     |> Array.map (fun m -> m.Groups.[1].Value |> float |> bigint)
 
 
-//Brute force through all numbers
+//Returns the concatenated number of array of bigints
+let concatenateNumbers (numbers : bigint array) : bigint =
+    numbers
+    |> Array.map string
+    |> String.concat ""
+    |> float
+    |> bigint
+
+
+//Brute force through all numbers (depricated)
 let calculateWaysToBeatRecord (time : bigint) (distance : bigint) : int =
     seq { for holdTime in 0I .. time - 1I -> min holdTime (time - holdTime) }
     |> Seq.filter (fun holdTime -> holdTime * (time - holdTime) > distance)
@@ -23,11 +32,11 @@ let findDeterminant (b : bigint) (c : bigint) : bigint =
 
 
 //Calculates the two roots from the determinant
-let findRoots (b : bigint) (d : bigint) : bigint * bigint =
+let findRoots (d : bigint) (b : bigint) : bigint * bigint =
     let sqrtD = d |> float |> sqrt
-    let fb = b |> float
-    let minRoot = (-fb + sqrtD) / -2.
-    let maxRoot = (-fb - sqrtD) / -2.
+    let floatB = b |> float
+    let minRoot = (-floatB + sqrtD) / -2.
+    let maxRoot = (-floatB - sqrtD) / -2.
     let actualMin = Math.Floor(minRoot + 1.) |> bigint
     let acutalMax = Math.Ceiling(maxRoot) |> bigint
 
@@ -37,22 +46,13 @@ let findRoots (b : bigint) (d : bigint) : bigint * bigint =
 //Calculates the product of amount of solutions for each race
 let findAmountOfOptimals arr1 arr2 =
     Array.map2 (fun time distance ->
-        let d = findDeterminant time (-distance)
-        let x1, x2 = findRoots time d
-        let delta = x2 - x1
-        delta
+        findDeterminant time (-distance)
+        |> findRoots time
+        |> (fun (x1, x2) -> x2 - x1)
     ) arr1 arr2
     |> Array.fold (fun acc x -> acc * x) 1I
     |> int
 
-
-//Returns the concatenated number of array of bigints
-let concatenateNumbers (numbers : bigint array) : bigint=
-    numbers
-    |> Array.map string
-    |> String.concat ""
-    |> float
-    |> bigint
 
 
 let task1() =
