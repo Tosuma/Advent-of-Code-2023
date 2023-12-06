@@ -22,7 +22,15 @@ let main() =
 
     beginDay 3
     Day3.task1() |> announceResult task1
-    Day3.task2() |> announceResult task2
+    //Day3.task2() |> announceResult task2
+
+    beginDay 4
+    Day4.task1() |> announceResult task1
+    //Day4.task2() |> announceResult task2
+
+    beginDay 6
+    Day6.task1() |> announceResult task1
+    Day6.task2() |> announceResult task2
 
     
 
