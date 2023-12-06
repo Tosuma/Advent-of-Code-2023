@@ -1,6 +1,7 @@
 ﻿module Program
 
 open System
+open System.Diagnostics
 
 let announceResult(testNumber: int) (result: int) =
     printfn "The result of task %d: %d" testNumber result
@@ -29,9 +30,14 @@ let main() =
     //Day4.task2() |> announceResult task2
 
     beginDay 6
+    let sw = Stopwatch.StartNew()
     Day6.task1() |> announceResult task1
+    sw.Stop()
+    let sw1 = Stopwatch.StartNew()
     Day6.task2() |> announceResult task2
-
+    sw1.Stop()
+    printfn "Time taken: %f milliseconds" (sw.Elapsed.TotalMilliseconds)
+    printfn "Time taken: %f milliseconds" (sw1.Elapsed.TotalMilliseconds)
     
 
 main()
